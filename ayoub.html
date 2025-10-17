@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>متجر أزياء — المتجر</title>
+  <link rel="stylesheet" href="ayoub.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="logo" href="admin.html">متجرك العصري</a>
+      <div class="controls">
+        <button id="theme-toggle" aria-label="تبديل الوضع">🌙/☀️</button>
+        <button id="open-cart" class="cart-btn">🛒 <span id="cart-count">0</span></button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>تسوّق أحدث الصيحات</h1>
+        <p>ملابس، أحذية، وإكسسوارات — توصيل لكل الجمهورية</p>
+        <a href="#catalog" class="cta">تسوق الآن</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1520975911284-afe32c6b0d3f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0f7b3f4a9c34b0f9a5f3b7a4e6d6b4a2" alt="أزياء">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="catalog" class="catalog-section">
+      <h2>المنتجات</h2>
+
+      <div class="filters">
+        <select id="category-filter">
+          <option value="all">الكل</option>
+          <option value="men">رجالي</option>
+          <option value="women">نسائي</option>
+          <option value="accessory">إكسسوارات</option>
+        </select>
+        <input id="search-input" placeholder="ابحث عن منتج..." />
+        <select id="sort-select">
+          <option value="default">ترتيب افتراضي</option>
+          <option value="price-asc">الأرخص أولاً</option>
+          <option value="price-desc">الأغلى أولاً</option>
+          <option value="name-asc">أ-ي</option>
+        </select>
+      </div>
+
+      <div id="product-grid" class="product-grid" aria-live="polite">
+        
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h3>لماذا تختارنا؟</h3>
+      <div class="reasons">
+        <div>🚚 توصيل سريع</div>
+        <div>💳 دفع آمن</div>
+        <div>🔁 إرجاع خلال 14 يوم</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- سلة -->
+  <aside id="cart-panel" class="cart-panel hidden" aria-hidden="true">
+    <div class="cart-header">
+      <h3>سلة المشتريات</h3>
+      <button id="close-cart">✖</button>
+    </div>
+    <ul id="cart-items" class="cart-items"></ul>
+    <div class="cart-summary">
+      <div>المجموع: <strong id="cart-total">0 د.ت</strong></div>
+      <button id="checkout" class="checkout-btn">إتمام الشراء</button>
+      <a href="checkout.html"></a>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast hidden">تمت الإضافة للسلة</div>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> متجرك العصري — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="ayoub.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة المسؤول - الطلبات</title>
+  <link rel="stylesheet" href="SHOPAZOUZ.css">
+</head>
+<body>
+  <header>
+    <h1>📦 جميع الطلبات</h1>
+  </header>
+
+  <main id="orders-container"></main>
+
+  <footer>
+    <button id="clear-orders">🗑️ حذف كل الطلبات</button>
+  </footer>
+
+  <script>
+    const ordersContainer = document.getElementById("orders-container");
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (orders.length === 0) {
+      ordersContainer.innerHTML = "<p>لا توجد طلبات حالياً.</p>";
+    } else {
+      orders.forEach((order, i) => {
+        const div = document.createElement("div");
+        div.className = "order-card";
+        div.innerHTML = `
+          <h3>طلب رقم ${i + 1}</h3>
+          <p><strong>الاسم:</strong> ${order.name}</p>
+          <p><strong>العنوان:</strong> ${order.address}</p>
+          <p><strong>الهاتف:</strong> ${order.phone}</p>
+          <p><strong>الدفع:</strong> ${order.payment}</p>
+          <p><strong>التاريخ:</strong> ${order.date}</p>
+          <h4>🛍️ السلة:</h4>
+          <pre>${JSON.stringify(order.cart, null, 2)}</pre>
+          <hr>
+        `;
+        ordersContainer.appendChild(div);
+      });
+    }
+
+    document.getElementById("clear-orders").onclick = () => {
+      if (confirm("هل أنت متأكد من حذف جميع الطلبات؟")) {
+        localStorage.removeItem("orders");
+        location.reload();
+      }
+    };
+  </script>
+</body>
+</html>
